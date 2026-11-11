@@ -1,6 +1,14 @@
 import './globals.css'
+
+import { Metadata } from 'next'
+
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+    title: 'Squeasy - Make what you want',
+    description: 'Squeasy is a recipe finder application built by Brian Inacio using Next.js and Tailwind',
+}
 
 export default function RootLayout({ children,}: { children: React.ReactNode }) {
     return (
