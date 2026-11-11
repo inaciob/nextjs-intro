@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+@import 'tailwindcss';
+
+@theme {
+    --font-primary: "Lexend", sans-serif;;
+    --font-secondary: "Atkinson Hyperlegible", sans-serif;
+
+    --color-main-bg: #FFFDF7;
+    --color-secondary-bg: #F5F5F5;
+    --color-border--light: #D9D9D9;
+    --color-text--secondary: #757575;
+    --color-btn--yellow: #E8B931;
+
+    /* NOTE: Might need to implement custom breakpoint override(s) as well? */
+    --container-lg-custom: 75rem;
+}

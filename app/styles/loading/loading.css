@@ -1,0 +1,72 @@
+.loading-overlay {
+    /* Locks it to the viewport, ignoring document scroll */
+    position: fixed;
+    /* Shorthand for top: 0; right: 0; bottom: 0; left: 0; */
+    inset: 0;
+    width: 100vw;
+    /* Adapts to mobile browser toolbars dynamically */
+    height: 100dvh;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* The glass cup */
+.glass-container {
+    position: relative;
+    width: 120px;
+    height: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(5px);
+}
+
+/* The rising water level */
+.water {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: #7dd3fc;
+    animation: fillWater 2.5s ease-in-out infinite alternate;
+}
+
+/* The animated wave on top of the water */
+.wave {
+    position: absolute;
+    top: -12px;
+    left: 0;
+    width: 200%;
+    height: 30px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 600 30" xmlns="http://www.w3.org/2000/svg"><path d="M 0 15 Q 150 0 300 15 T 600 15 L 600 30 L 0 30 Z" fill="%237dd3fc"/></svg>');
+    background-repeat: repeat-x;
+    animation: waveMove 1s linear infinite;
+}
+
+/* Keyframes for filling the glass */
+@keyframes fillWater {
+    0% {
+        height: 10%;
+    }
+
+    100% {
+        height: 90%;
+    }
+}
+
+/* Keyframes for sliding the wave horizontally */
+@keyframes waveMove {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
