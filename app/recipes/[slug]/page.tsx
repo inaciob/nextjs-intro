@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Recipe } from '../../types/recipe'
+import PrintButton from '../../components/print-button/print-button'
 
 interface RecipePageProps {
     params: Promise<{ slug: string }>
@@ -40,13 +41,17 @@ export default async function RecipePage({ params, }: RecipePageProps) {
 
         return (
             <main className="mx-auto max-w-9/10 xl:max-w-lg-custom py-10 font-primary">
-                <Link href="/" className="inline-block mb-6 text-base underline hover:text-gray-600">
-                    Back to all recipes
-                </Link>
+                <div className="flex print:hidden justify-between xl:max-w-2/3">
+                    <Link href="/" className="inline-block mb-6 text-base underline hover:text-gray-600">
+                        Back to all recipes
+                    </Link>
+
+                    <PrintButton />
+                </div>
 
                 <div className="xl:flex xl:flex-row xl:justify-between xl:gap-x-6">
                     <div className="w-full xl:basis-2/3">
-                        <div className="relative grid grid-cols-1 items-start md:inline-block md:w-full">
+                        <div className="relative grid grid-cols-1 items-start md:inline-block print:hidden md:w-full">
                             <div className="w-80 md:w-96 absolute z-40 top-[calc(50%)] md:top-[calc(50%-30px)] left-[50%] translate-[-50%] text-center text-white">
                                 <h1 className="text-2xl md:text-3xl font-bold font-primary mb-4">{recipe.name}</h1>
 
@@ -78,6 +83,21 @@ export default async function RecipePage({ params, }: RecipePageProps) {
                             </div>
                         </div>
 
+                        <div className="hidden print:block">
+                            <h1 className="text-2xl md:text-3xl font-bold font-primary mb-4">{recipe.name}</h1>
+                            <div className="grid grid-cols-3 gap-1 text-sm md:text-base">
+                                <p className="inline">
+                                    <strong>Prep:</strong> {recipe.prepTimeMinutes} min.
+                                </p>
+                                <p className="inline">
+                                    <strong>Cook:</strong> {recipe.cookTimeMinutes} min.
+                                </p>
+                                <p className="inline">
+                                    <strong>Serves:</strong> {recipe.servings}
+                                </p>
+                            </div>
+                        </div>
+
                         <div className="md:grid md:grid-cols-2">
                             {/* Ingredients Section */}
                             <div className="pt-10 md:pt-6">
@@ -101,7 +121,7 @@ export default async function RecipePage({ params, }: RecipePageProps) {
                         </div>
                     </div>
 
-                    <div className="w-full mt-10 xl:mt-0 pt-6 xl:pt-0 border-t border-border--light xl:border-none xl:basis-1/3">
+                    <div className="w-full mt-10 xl:mt-0 pt-6 xl:pt-0 border-t border-border--light xl:border-none xl:basis-1/3 print:hidden">
                         <h2 className="text-xl font-semibold pb-4">Related recipes:</h2>
 
                         {/*
@@ -187,7 +207,7 @@ export default async function RecipePage({ params, }: RecipePageProps) {
                     </div>
                 </div>
 
-                <Link href="/" className="inline-block mt-10 text-base underline hover:text-gray-600">
+                <Link href="/" className="inline-block print:hidden mt-10 text-base underline hover:text-gray-600">
                     Back to all recipes
                 </Link>
             </main>

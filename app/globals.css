@@ -15,3 +15,24 @@
     /* NOTE: Might need to implement custom breakpoint override(s) as well? */
     --container-lg-custom: 75rem;
 }
+
+@media print {
+    /* Hide general UI elements */
+    nav,
+    .no-print {
+        display: none;
+    }
+
+    /* Reset body background and shadows for paper */
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    /* Expand article container to full page width */
+    main {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
