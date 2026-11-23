@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Recipe } from '../../types/recipe'
+import CookModeToggle from '../../components/cook-mode-toggle/cook-mode-toggle'
 import PrintButton from '../../components/print-button/print-button'
 
 interface RecipePageProps {
@@ -97,6 +98,8 @@ export default async function RecipePage({ params, }: RecipePageProps) {
                                 </p>
                             </div>
                         </div>
+
+                        <CookModeToggle />
 
                         <div className="md:grid md:grid-cols-2">
                             {/* Ingredients Section */}
